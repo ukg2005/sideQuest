@@ -1,0 +1,15 @@
+# Python virtual environments
+venv/
+.venv/
+
+# Node
+node_modules/
+
+# Build outputs
+build/
+dist/
+.svelte-kit/
+
+# Env files
+.env
+.env.*

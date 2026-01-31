@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+/* Tailwind v4: make `dark:` respond to `.dark` on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+	/* Light theme (yellow + red) */
+	--sq-bg: #fbe11c; /* bright yellow (close to Tailwind yellow-300) */
+	--sq-text: #111827; /* near-black */
+	--sq-font-display: 'Fredoka', 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--sq-muted: rgba(17, 24, 39, 0.75);
+	--sq-muted-2: rgba(17, 24, 39, 0.55);
+	--sq-surface: #ffffff;
+	--sq-surface-2: rgba(255, 255, 255, 0.7);
+	--sq-border: rgba(17, 24, 39, 0.12);
+	--sq-card-border: #ffffff;
+
+	--sq-accent: #ef4444; /* red */
+	--sq-accent-2: #dc2626; /* darker red */
+	--sq-danger: #b91c1c;
+	--sq-on-accent: #ffffff;
+}
+
+/* Shared UI utilities */
+:where(a, button, input, select, textarea):focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px color-mix(in oklab, var(--sq-accent) 45%, transparent);
+	border-radius: 12px;
+}
+
+.sq-btn {
+	@apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold;
+	@apply bg-[var(--sq-surface)] text-[var(--sq-text)] border border-[var(--sq-border)];
+	@apply hover:bg-[color-mix(in_oklab,var(--sq-surface)_90%,white)] dark:hover:bg-[color-mix(in_oklab,var(--sq-surface)_85%,black)];
+}
+
+.sq-btn--primary {
+	@apply bg-[var(--sq-accent)] text-[var(--sq-on-accent)] border-transparent;
+	@apply hover:bg-[color-mix(in_oklab,var(--sq-accent)_88%,black)] dark:hover:bg-[color-mix(in_oklab,var(--sq-accent)_82%,black)];
+}
+
+.sq-btn--danger {
+	@apply bg-[var(--sq-danger)] text-[var(--sq-on-accent)] border-transparent;
+	@apply hover:bg-[color-mix(in_oklab,var(--sq-danger)_88%,black)] dark:hover:bg-[color-mix(in_oklab,var(--sq-danger)_82%,black)];
+}
+
+.sq-card {
+	@apply rounded-3xl border border-[var(--sq-border)] bg-[var(--sq-surface)] text-[var(--sq-text)];
+	@apply shadow-[0_10px_30px_-18px_color-mix(in_oklab,var(--sq-text)_30%,transparent)];
+}
+
+.sq-card--hover {
+	@apply transition-transform duration-200;
+}
+
+.sq-card--hover:hover {
+	transform: translateY(-2px);
+}
+
+.sq-page {
+	animation: sq-fade 140ms ease-out;
+}
+
+@keyframes sq-fade {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+html.dark {
+	/* Dark theme (black + white) */
+	--sq-bg: #000000;
+	--sq-text: #ffffff;
+	--sq-muted: rgba(255, 255, 255, 0.78);
+	--sq-muted-2: rgba(255, 255, 255, 0.6);
+	--sq-surface: #0b0b0b;
+	--sq-surface-2: #111111;
+	--sq-border: rgba(255, 255, 255, 0.14);
+	--sq-card-border: rgba(255, 255, 255, 0.14);
+
+	--sq-accent: #ffffff;
+	--sq-accent-2: rgba(255, 255, 255, 0.85);
+	--sq-danger: #ef4444;
+	--sq-on-accent: #000000;
+}
+
+@theme {
+	--font-sans: var(--sq-font-display);
+
+	--animate-blink: blink 0.1s step-end infinite;
+	@keyframes blink {
+		0%, 50% {
+			opacity: 1;
+		}
+		51%, 100% {
+			opacity: 0;
+		}
+	}
+}
