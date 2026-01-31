@@ -249,12 +249,16 @@
     <header class="flex flex-col items-center gap-4">
         <div class="flex gap-3 justify-center">
             <h1 class="text-4xl sm:text-5xl font-semibold">Perfect-8</h1>
-            <div class="relative group">
-                <span class="w-6 h-6 bg-[var(--sq-surface)] text-[var(--sq-text)] font-bold rounded-full flex justify-center items-center cursor-pointer shadow-md border border-[var(--sq-border)] transition-transform group-hover:scale-110">?</span>
-                <div class="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-[var(--sq-surface)] text-[var(--sq-text)] text-sm leading-relaxed rounded-xl shadow-xl border border-[var(--sq-border)] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all">
+            <details class="relative">
+                <summary
+                    aria-label="How to play"
+                    class="list-none w-7 h-7 bg-[var(--sq-surface)] text-[var(--sq-text)] font-semibold rounded-full flex justify-center items-center cursor-pointer shadow-md border border-[var(--sq-border)] select-none">
+                    ?
+                </summary>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 max-w-[90vw] bg-[var(--sq-surface)] text-[var(--sq-text)] text-sm leading-relaxed rounded-xl shadow-xl border border-[var(--sq-border)] z-10">
                     <p class="p-4">Lock any dice showing the number you want, then roll until all match before the timer hits zero.</p>
                 </div>
-            </div>
+            </details>
         </div>
         
     </header>

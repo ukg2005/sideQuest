@@ -29,6 +29,10 @@ body {
 	min-height: 100%;
 }
 
+summary::-webkit-details-marker {
+	display: none;
+}
+
 /* Shared UI utilities */
 :where(a, button, input, select, textarea):focus-visible {
 	outline: none;

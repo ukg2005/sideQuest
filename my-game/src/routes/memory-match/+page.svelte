@@ -210,12 +210,16 @@
 	<header class="flex flex-col items-center gap-3">
 		<div class="flex gap-3 justify-center items-center">
 			<h1 class="text-4xl sm:text-5xl font-medium">Memory Match</h1>
-			<div class="relative group">
-				<span class="w-6 h-6 bg-[var(--sq-surface)] text-[var(--sq-text)] font-semibold rounded-full flex justify-center items-center cursor-pointer shadow-md border border-[var(--sq-border)] transition-transform group-hover:scale-110">?</span>
-				<div class="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 bg-[var(--sq-surface)] text-[var(--sq-text)] text-sm leading-relaxed rounded-xl shadow-xl border border-[var(--sq-border)] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all z-10">
+			<details class="relative">
+				<summary
+					aria-label="How to play"
+					class="list-none w-7 h-7 bg-[var(--sq-surface)] text-[var(--sq-text)] font-semibold rounded-full flex justify-center items-center cursor-pointer shadow-md border border-[var(--sq-border)] select-none">
+					?
+				</summary>
+				<div class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 max-w-[90vw] bg-[var(--sq-surface)] text-[var(--sq-text)] text-sm leading-relaxed rounded-xl shadow-xl border border-[var(--sq-border)] z-10">
 					<p class="p-4">Flip two cards at a time and match all pairs. Best score is the fastest time (ties break by fewer moves).</p>
 				</div>
-			</div>
+			</details>
 		</div>
 	</header>
 
