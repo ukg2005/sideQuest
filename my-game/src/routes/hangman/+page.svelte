@@ -249,12 +249,16 @@
     <header class="flex flex-col items-center gap-3">
         <div class="flex gap-3 justify-center items-center">
             <h1 class="text-4xl sm:text-5xl font-medium">Hangman</h1>
-            <div class="relative group">
-                <span class="w-6 h-6 bg-[var(--sq-surface)] text-[var(--sq-text)] font-semibold rounded-full flex justify-center items-center cursor-pointer shadow-md border border-[var(--sq-border)] transition-transform group-hover:scale-110">?</span>
-                <div class="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-[var(--sq-surface)] text-[var(--sq-text)] text-sm leading-relaxed rounded-xl shadow-xl border border-[var(--sq-border)] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all z-10">
+            <details class="relative">
+                <summary
+                    aria-label="How to play"
+                    class="list-none w-7 h-7 bg-[var(--sq-surface)] text-[var(--sq-text)] font-semibold rounded-full flex justify-center items-center cursor-pointer shadow-md border border-[var(--sq-border)] select-none">
+                    ?
+                </summary>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 max-w-[90vw] bg-[var(--sq-surface)] text-[var(--sq-text)] text-sm leading-relaxed rounded-xl shadow-xl border border-[var(--sq-border)] z-10">
                     <p class="p-4">Guess the hidden word by selecting letters. You have 6 wrong guesses before you lose!</p>
                 </div>
-            </div>
+            </details>
         </div>
     </header>
 
@@ -335,11 +339,27 @@
             </div>
 
             <!-- Word Display -->
-            <div class="text-center py-8 bg-[var(--sq-surface-2)] rounded-xl border border-[var(--sq-border)]">
-                <p class="text-5xl font-semibold tracking-widest text-[var(--sq-text)] mb-4">
+            <div class="text-center py-6 sm:py-8 bg-[var(--sq-surface-2)] rounded-xl border border-[var(--sq-border)]">
+                <p class="text-[clamp(1.75rem,7vw,3rem)] font-semibold tracking-[0.35em] sm:tracking-widest text-[var(--sq-text)] mb-3 break-words px-2">
                     {displayWord}
                 </p>
-                <p class="text-sm text-[var(--sq-muted-2)] italic">Type any letter on your keyboard to guess</p>
+                <p class="text-sm text-[var(--sq-muted-2)] italic">Tap letters below (or type on a keyboard) to guess</p>
+            </div>
+
+            <!-- On-screen Keyboard (mobile-friendly) -->
+            <div class="w-full">
+                <div class="grid grid-cols-7 sm:grid-cols-13 gap-2">
+                    {#each alphabet as letter}
+                        <button
+                            type="button"
+                            onclick={() => guessLetter(letter)}
+                            disabled={gameState !== 'playing' || guessedLetters.includes(letter)}
+                            aria-label={`Guess letter ${letter}`}
+                            class="sq-btn px-0 py-2 sm:py-2.5 text-sm sm:text-base rounded-lg w-full text-center {gameState !== 'playing' || guessedLetters.includes(letter) ? 'opacity-50 cursor-not-allowed' : ''}">
+                            {letter}
+                        </button>
+                    {/each}
+                </div>
             </div>
 
             <!-- Reset Button -->

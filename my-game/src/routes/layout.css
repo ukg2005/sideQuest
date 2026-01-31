@@ -23,6 +23,12 @@
 	--sq-on-accent: #ffffff;
 }
 
+html,
+body {
+	background: var(--sq-bg);
+	min-height: 100%;
+}
+
 /* Shared UI utilities */
 :where(a, button, input, select, textarea):focus-visible {
 	outline: none;

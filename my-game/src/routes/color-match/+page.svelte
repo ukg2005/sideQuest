@@ -208,12 +208,16 @@
     <header class="flex flex-col items-center gap-3">
         <div class="flex gap-3 justify-center items-center">
             <h1 class="text-4xl sm:text-5xl font-medium">Color Match</h1>
-            <div class="relative group">
-                <span class="w-6 h-6 bg-[var(--sq-surface)] text-[var(--sq-text)] font-semibold rounded-full flex justify-center items-center cursor-pointer shadow-md border border-[var(--sq-border)] transition-transform group-hover:scale-110">?</span>
-                <div class="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 bg-[var(--sq-surface)] text-[var(--sq-text)] text-sm leading-relaxed rounded-xl shadow-xl border border-[var(--sq-border)] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all z-10">
+            <details class="relative">
+                <summary
+                    aria-label="How to play"
+                    class="list-none w-7 h-7 bg-[var(--sq-surface)] text-[var(--sq-text)] font-semibold rounded-full flex justify-center items-center cursor-pointer shadow-md border border-[var(--sq-border)] select-none">
+                    ?
+                </summary>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 max-w-[90vw] bg-[var(--sq-surface)] text-[var(--sq-text)] text-sm leading-relaxed rounded-xl shadow-xl border border-[var(--sq-border)] z-10">
                     <p class="p-4">Read the instruction carefully! Sometimes click the color NAME, sometimes click the text COLOR. Don't get confused!</p>
                 </div>
-            </div>
+            </details>
         </div>
     </header>
 
@@ -260,17 +264,17 @@
 
                 <!-- Instruction -->
                 <div class="bg-[var(--sq-surface-2)] p-4 rounded-xl border border-[var(--sq-border)] text-center">
-                    <p class="text-xl font-semibold text-[var(--sq-text)] mb-2">{instructionText}</p>
+                    <p class="text-base sm:text-xl font-semibold text-[var(--sq-text)]">{instructionText}</p>
                 </div>
 
                 <!-- Color Display -->
-                <div class="bg-[var(--sq-surface-2)] p-12 rounded-xl flex justify-center items-center relative min-h-[200px] border border-[var(--sq-border)]">
-                    <p class="text-8xl font-semibold transition-colors duration-200" style="color: {currentTextColor}">
+                <div class="bg-[var(--sq-surface-2)] px-4 py-10 sm:p-12 rounded-xl flex justify-center items-center relative min-h-[160px] sm:min-h-[200px] border border-[var(--sq-border)]">
+                    <p class="text-[clamp(2.75rem,11vw,6rem)] leading-none font-semibold transition-colors duration-200 text-center break-words" style="color: {currentTextColor}">
                         {currentColorName}
                     </p>
                     {#if feedback}
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-9xl {feedback.includes('✗') ? 'text-red-500' : 'text-green-500'} animate-pulse-custom">
+                            <span class="text-[clamp(3.25rem,15vw,7rem)] leading-none {feedback.includes('✗') ? 'text-red-500' : 'text-green-500'} animate-pulse-custom">
                                 {feedback}
                             </span>
                         </div>
