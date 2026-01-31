@@ -63,18 +63,6 @@ This repo is intentionally focused on “real UI + real game logic”:
 - Clean routing and navigation between multiple games
 - A consistent visual style using Tailwind
 
-## Deploy Notes
-
-- Recommended: deploy as static to Cloudflare Pages / Netlify (lowest headache for this project).
-- This repo uses `@sveltejs/adapter-static`, which avoids Windows symlink issues and works great for a client-only app.
-- If you deploy and want a clean slate, use the Profile reset controls (clears local stats stored on that device).
-
-## Roadmap (Nice-to-Have)
-
-- Add end-to-end tests (Playwright) for core interactions
-- Add a deployed demo link + screenshots
-- Optional: PWA/offline support
-
 ## License
 
 No license has been chosen yet.
